@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1606048339 source:c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\main.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+	<locale.h>
+
+1605992197 c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\cabec.h
+
+1605991890 c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\util.c
+	<stdio.h>
+	<stdlib.h>
+	"cabec.h"
+
+1606048421 c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\header.h
+	<locale.h>
+
+1606004160 source:c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\util.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1606048086 source:c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+	<locale.h>
+	<string.h>
+
+1606004540 c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1606007576 c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\conta.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1606048382 source:c:\users\llf36\onedrive\햞ea de trabalho\projetolinguagemprogramacao\conta.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+	<locale.h>
+
