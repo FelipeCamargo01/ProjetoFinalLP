@@ -69,14 +69,6 @@ sAccount *newAccount() {
 void allocOneMoreAccount() {
 
     realloc(accounts, totalOfAccounts + 1);
-
-    /* sAccount *ac;
-    ac = malloc((totalOfAccounts + 1) * sizeof(*ac));
-    for(int index = 0; index < totalOfAccounts; index++) {
-        ac[index] = accounts[index];
-    }
-    free(accounts);
-    accounts = ac; */
     totalOfAccounts++;
 }
 
