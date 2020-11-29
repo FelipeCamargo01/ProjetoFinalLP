@@ -91,14 +91,14 @@ void showAllAccounts() {
 }
 
 sClient *findAnClient() {
-    int cpf;
+    char cpf[MAX_CPF];
     int isRightAccount;
     int returnOpt;
     sClient *client;
 
     do {
         printf("Busque uma conta pelo CPF \n");
-        scanfInt(&cpf);
+        scanfString(&cpf);
         client = findClientByCPF(cpf);
         if(client == (sClient *) -1) {
             printf("Conta não encontrada\n");
@@ -174,7 +174,8 @@ void seeBalance() {
 
 sAccount *findTheAccount(sClient *client) {
     for(int index = 0; index < totalOfAccounts; index++) {
-        if(accounts[index].client->cpf == client->cpf) return &accounts[index];
+        if (!strcmp(client->cpf, accounts[index].client->cpf)) return &accounts[index];
+        //if(accounts[index].client->cpf == client->cpf) return &accounts[index];
     }
     return (sAccount *) -1;
 }

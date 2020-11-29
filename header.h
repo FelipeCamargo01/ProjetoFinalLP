@@ -2,10 +2,12 @@
 #define HEADER_H_INCLUDED
 #include <locale.h>
 
+#define MAX_CPF 12
+
 //*******defining variables cliente*******//
 typedef struct Client {
     char name[256];
-    int cpf;
+    char cpf[MAX_CPF];
 } sClient;
 //*******defining variables contas*******//
 typedef struct Account sAccount;
@@ -20,7 +22,7 @@ void initClient();
 sClient *newClient();
 void addClient();
 void showAllClients();
-sClient *findClientByCPF(int cpf);
+sClient *findClientByCPF(char* cpf);
 //*******conta functions*******//
 void initAccount();
 sAccount *newAccount();

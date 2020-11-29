@@ -4,14 +4,16 @@
 #include <locale.h>
 #include <string.h>
 
+#define MAX_CPF 12
+
 int totalOfClients = 0;
 
-int verifyIfAlreadyExists(int cpf);
+int verifyIfAlreadyExists(char* cpf);
 void addInformationsAboutClient(sClient *client);
 void initClient();
 void allocOneMoreClient();
 void printfClientInformations(sClient *client);
-sClient *findClientByCPF(int cpf);
+sClient *findClientByCPF(char* cpf);
 sClient *clients;
 sClient *aux;
 
@@ -27,16 +29,16 @@ sClient *newClient() {
 
 void addInformationsAboutClient(sClient *client) {
     cleanScreen();
-    int cpf;
+    char cpf[MAX_CPF];
     int errorReturn;
     printf(":::::::::Informações do cliente::::::::: \n");
     do {
-        printf("Digite o cpf \n");
-        scanfInt(&cpf);
+        printf("Digite o cpf (somente números) \n");
+        scanfString(&cpf);
         errorReturn = verifyIfAlreadyExists(cpf);
         if(errorReturn) printf("CPF Já cadastrado \n");
     }while(errorReturn);
-    client->cpf = cpf;
+    strcpy(client->cpf, cpf);
     printf("Digite o nome \n");
     scanfString(&client->name);
 }
@@ -63,7 +65,7 @@ void showAllClients() {
 void printfClientInformations(sClient *client) {
     printf(":::::Mostrando informações do cliente:::::: \n");
     printf("CPF -> ");
-    printf("%d \n", client->cpf);
+    printf("%s \n", client->cpf);
     printf("Nome -> ");
     printf("%s \n", client->name);
 }
@@ -77,18 +79,19 @@ void addClient() {
     pauseScreen();
 }
 
-sClient *findClientByCPF(int cpf) {
+sClient *findClientByCPF(char* cpf) {
     for(int index = 0; index < totalOfClients; index++) {
-        if(clients[index].cpf == cpf) {
+        if (!strcmp(cpf, clients[index].cpf )) {
+//        if(clients[index].cpf == cpf) {
             return &clients[index];
         }
     }
     return (sClient *) -1;
 }
 
-int verifyIfAlreadyExists(int cpf) {
+int verifyIfAlreadyExists(char* cpf) {
     for(int index = 0; index < totalOfClients; index++) {
-        if(clients[index].cpf == cpf) {
+        if (!strcmp(cpf, clients[index].cpf )) {
             return 1;
         }
     }
