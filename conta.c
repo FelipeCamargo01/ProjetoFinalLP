@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "header.h"
 #include <locale.h>
+#include <string.h>
+
 
 int totalOfAccounts = 0;
 
@@ -68,7 +70,22 @@ sAccount *newAccount() {
 
 void allocOneMoreAccount() {
 
-    realloc(accounts, totalOfAccounts + 1);
+    int novoTamanho = totalOfAccounts + 1;
+    sAccount *newAccounts;
+
+    newAccounts = malloc(novoTamanho * sizeof(newAccounts));
+    if(!newAccounts)
+    {
+        printf("Erro na alocacao de memoria!");
+        exit(-1);
+    }
+
+    for(int i = 0; i < totalOfAccounts; i++)
+        newAccounts[i] = accounts[i];
+
+    free(accounts);
+    accounts = newAccounts;
+
     totalOfAccounts++;
 }
 
@@ -92,21 +109,23 @@ void showAllAccounts() {
 
 sClient *findAnClient() {
     char cpf[MAX_CPF];
-    int isRightAccount;
+    int isRightAccount = 0;
     int returnOpt;
     sClient *client;
 
     do {
         printf("Busque uma conta pelo CPF \n");
-        scanfString(&cpf);
+        fflush(stdin);
+        scanfString(&cpf[0]);
         client = findClientByCPF(cpf);
         if(client == (sClient *) -1) {
             printf("Conta não encontrada\n");
             printf("Digite 1 para pesquisar novo cpf \n");
             printf("Digite 2 para voltar ao menu \n");
             scanfInt(&returnOpt);
-            if(returnOpt == 2) chooseOptions();
+            if(returnOpt != 1) chooseOptions();
         };
+
         if(client != (sClient *) -1) {
             printfFindAccountMessages(client);
             scanfInt(&isRightAccount);
@@ -175,7 +194,6 @@ void seeBalance() {
 sAccount *findTheAccount(sClient *client) {
     for(int index = 0; index < totalOfAccounts; index++) {
         if (!strcmp(client->cpf, accounts[index].client->cpf)) return &accounts[index];
-        //if(accounts[index].client->cpf == client->cpf) return &accounts[index];
     }
     return (sAccount *) -1;
 }

@@ -9,6 +9,7 @@
 int totalOfClients = 0;
 
 int verifyIfAlreadyExists(char* cpf);
+int showReturnOption();
 void addInformationsAboutClient(sClient *client);
 void initClient();
 void allocOneMoreClient();
@@ -34,13 +35,33 @@ void addInformationsAboutClient(sClient *client) {
     printf(":::::::::Informações do cliente::::::::: \n");
     do {
         printf("Digite o cpf (somente números) \n");
+        fflush(stdin);
         scanfString(&cpf);
         errorReturn = verifyIfAlreadyExists(cpf);
-        if(errorReturn) printf("CPF Já cadastrado \n");
+        if(errorReturn) {
+            printf("CPF Já cadastrado \n");
+            if(showReturnOption() == 2) {
+            free(client);
+            chooseOptions();
+            }
+        }
     }while(errorReturn);
     strcpy(client->cpf, cpf);
+
+    char nome[255];
+
+    cleanScreen();
     printf("Digite o nome \n");
-    scanfString(&client->name);
+    fflush(stdin);
+    scanfString(&nome[0]);
+    strcpy(client->name, nome);
+}
+
+int showReturnOption() {
+    int option;
+    printf("Digite 1 para cadastrar outro cpf e 2 para voltar \n");
+    scanfInt(&option);
+    return option;
 }
 
 void initClient() {
@@ -50,7 +71,24 @@ void initClient() {
 
 void allocOneMoreClient() {
 
-    realloc(clients, totalOfClients + 1);
+    int novoTamanho = totalOfClients + 1;
+    sClient *newClients;
+
+    newClients = malloc(novoTamanho * sizeof(newClients));
+    if(!newClients)
+    {
+        printf("Erro na alocacao de memoria!");
+        exit(-1);
+    }
+
+    for(int i = 0; i < totalOfClients; i++) {
+        strcpy (newClients[i].cpf,clients[i].cpf);
+        strcpy (newClients[i].name,clients[i].name);
+    }
+
+    free(clients);
+    clients = newClients;
+
     totalOfClients++;
 }
 
@@ -82,7 +120,6 @@ void addClient() {
 sClient *findClientByCPF(char* cpf) {
     for(int index = 0; index < totalOfClients; index++) {
         if (!strcmp(cpf, clients[index].cpf )) {
-//        if(clients[index].cpf == cpf) {
             return &clients[index];
         }
     }

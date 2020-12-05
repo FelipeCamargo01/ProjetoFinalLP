@@ -9,7 +9,6 @@ void scanfFloat(float *memoryAddressFloat) {
     scanf("%f", memoryAddressFloat);
 }
 void scanfString(char *arrayAddress) {
-    fflush(stdin);
     gets(arrayAddress);
 }
 void cleanScreen() {

@@ -12,8 +12,8 @@ typedef struct Client {
 //*******defining variables contas*******//
 typedef struct Account sAccount;
 //*******Util functions*********//
-void scanfInt(int *memoryAddressInt);
-void scanfFloat(float *memoryAddressFloat);
+void scanfInt(int * memoryAddressInt);
+void scanfFloat(float * memoryAddressFloat);
 void scanfString(char *arrayAddress);
 void cleanScreen();
 void pauseScreen();

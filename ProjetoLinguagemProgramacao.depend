@@ -43,3 +43,31 @@
 	"header.h"
 	<locale.h>
 
+1607176741 source:c:\users\llf36\onedrive\햞ea de trabalho\lp\projetofinallp\conta.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+	<locale.h>
+	<string.h>
+
+1607176727 c:\users\llf36\onedrive\햞ea de trabalho\lp\projetofinallp\header.h
+	<locale.h>
+
+1607175964 source:c:\users\llf36\onedrive\햞ea de trabalho\lp\projetofinallp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+	<locale.h>
+
+1607176720 source:c:\users\llf36\onedrive\햞ea de trabalho\lp\projetofinallp\util.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1607177418 source:c:\users\llf36\onedrive\햞ea de trabalho\lp\projetofinallp\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+	<locale.h>
+	<string.h>
+
